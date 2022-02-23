@@ -6,7 +6,8 @@
       description = "A flake using haskell-flake";
     };
     lib = {
-      mkOutputs = { nixpkgs, package, systems ? flake-utils.lib.defaultSystems, name, defaultGhcVersion ? "8107" }:
+      mkOutputs = { nixpkgs, package, systems ? flake-utils.lib.defaultSystems
+        , name, defaultGhcVersion ? "8107" }:
         let preCall = import ./preCall.nix;
         in preCall (fArgs@{ ghcVersion ? defaultGhcVersion }:
           flake-utils.lib.eachSystem systems (system:
