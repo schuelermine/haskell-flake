@@ -1,6 +1,6 @@
 {
   description = "A reusable flake output format for haskell packages";
-  outputs = { flake-utils, ... }: {
+  outputs = { flake-utils, self }: {
     defaultTemplate = self.templates.haskell-flake;
     templates.haskell-flake = {
       path = ./template;
