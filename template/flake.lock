@@ -19,11 +19,11 @@
         "flake-utils": "flake-utils"
       },
       "locked": {
-        "lastModified": 1645607898,
-        "narHash": "sha256-XbS7BYPzkuK2yMvaN4Nmio0FKWwG4ddJZSQeSogDd7k=",
+        "lastModified": 1645612936,
+        "narHash": "sha256-ERxmBBRR6EL+ePkFrjAIPXaxWGdmTMsXYVbGxKhIaLY=",
         "owner": "schuelermine",
         "repo": "haskell-flake",
-        "rev": "d78965bd4e7c7796d68dfb9c8b873c54f179a755",
+        "rev": "4be818d0f8244cd3ded0b361481779227210bdde",
         "type": "github"
       },
       "original": {
