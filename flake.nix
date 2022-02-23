@@ -19,6 +19,7 @@
               else
                 pkgs.haskellPackages;
             in {
+              defaultPackage = self.packages.${system}.${name};
               packages.${name} = hkgs.callPackage package { };
               devShell = (self fArgs).devShells.${system}.${name};
               devShells = let
