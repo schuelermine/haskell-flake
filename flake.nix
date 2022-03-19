@@ -20,16 +20,22 @@
               else
                 pkgs.haskellPackages;
             in {
-              defaultPackage = self.packages.${system}.${name};
-              packages.${name} = hkgs.callPackage package { };
-              devShell = (self fArgs).devShells.${system}.${name};
+              defaultPackage =
+                self.packages.${system}.default; # defaultPackage is deprecated as of Nix 2.7.0
+              packages = rec {
+                default = hkgs.callPackage package { };
+                ${name} = default;
+              };
+              devShell =
+                self.devShells.${system}.default; # devShell is deprecated as of Nix 2.7.0
               devShells = let
                 mkDevShell = args:
                   pkgs.mkShellNoCC ({
-                    inputsFrom = [ (self fArgs).packages.${system}.${name} ];
+                    inputsFrom = [ self.packages.${system}.${name} ];
                   } // args);
-              in {
-                ${name} = mkDevShell { };
+              in rec {
+                default = mkDevShell { };
+                ${name} = default;
                 withCabal =
                   mkDevShell { packages = with pkgs; [ cabal-install ]; };
                 withStack = mkDevShell { packages = with pkgs; [ stack ]; };
